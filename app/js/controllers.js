@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gitwhere.controllers', [])
-.controller('MainController', ['$scope', function($scope) {
+.controller('MainController', ['$scope', 'googleMapsAPIAdapter', function($scope, googleMapsAPIAdapter) {
 
 	$scope.statusMessage = "All good!";
 
@@ -11,6 +11,7 @@ angular.module('gitwhere.controllers', [])
         };
 
     var marker;
+    $scope.location = "";
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
@@ -21,18 +22,19 @@ angular.module('gitwhere.controllers', [])
 		navigator.geolocation.getCurrentPosition(function(position) {
 			var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			map.setCenter(pos);
-			map.setZoom(8);
+			map.setZoom(9);
 
 			marker = new google.maps.Marker({
 				position: pos
 			}).setMap(map);
 
-			var onIdleListener = google.maps.event.addListener(map, 'idle', function() {
-				$scope.statusMessage = "All done!";
-				$scope.$apply();
+			googleMapsAPIAdapter.reverseGeocode(pos.lat(), pos.lng())
+				.then(function(data) {
+					var city = data["address_components"][1]["long_name"];
+					var state = data["address_components"][2]["short_name"];
+					$scope.statusMessage = "Location: " + city + ", " + state;
+				});
 
-				google.maps.event.removeListener(onIdleListener);
-			});
 		}, function() {
 			$scope.statusMessage = "Can't determine location due to user permissions";
 			$scope.$apply();

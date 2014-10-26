@@ -3,6 +3,7 @@
 angular.module('gitwhere', [
 	'gitwhere.controllers',
 	'gitwhere.directives',
+	'gitwhere.services',
 	'ngRoute'
 	])
 .config(['$routeProvider', function($routeProvider) {
