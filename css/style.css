@@ -3,3 +3,12 @@ html, body, div.ng-scope, #map-canvas {
 	margin: 0;
 	padding: 0;
 }
+
+#map-canvas {
+	border-left: 5px solid black;
+}
+
+#status-message {
+	font-style: italic;
+	color: gray;
+}
