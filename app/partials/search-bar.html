@@ -1,15 +1,14 @@
 <div>
 	<form class="navbar-form" role="search">
 
-			<div
+			<div>
 	 		<label>Type in a city and state or zip to see the GitHub users in that area:</label>
-
-	    <div class="input-group">
-	        <input type="text" class="form-control" placeholder="Location" name="q">
+		    <div class="input-group">
+	        <input type="text" class="form-control" placeholder="Location" name="q" ng-model="searchLocation" />
 	        <div class="input-group-btn">
-	            <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+	            <button class="btn btn-default" ng-click="searchByLocation()"><i class="glyphicon glyphicon-search"></i></button>
 	        </div>
-	    </div>
+		    </div>
 			</div>
 
 	</form>

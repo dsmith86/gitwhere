@@ -9,4 +9,13 @@ directive('searchBar', function() {
 		transclude: true,
 		templateUrl: 'app/partials/search-bar.html'
 	}
+}).
+
+directive('developerList', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		transclude: true,
+		templateUrl: 'app/partials/developer-list.html'
+	}
 });

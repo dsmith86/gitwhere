@@ -4,7 +4,8 @@ angular.module('gitwhere', [
 	'gitwhere.controllers',
 	'gitwhere.directives',
 	'gitwhere.services',
-	'ngRoute'
+	'ngRoute',
+	'ngResource'
 	])
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
