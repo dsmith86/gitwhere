@@ -1,5 +1,8 @@
-<div>
-	<div ng-repeat="developer in developerList">
-		{{developer.username}}
+<div id="wrapper">
+	<div id="developer-list">
+		<div class="developer-list-item" ng-repeat="developer in developerList">
+			<img ng-src="{{developer.avatar}}" />
+			<a ng-href="{{developer.url}}" target="_blank">{{developer.username}}</a>
+		</div>
 	</div>
 </div>
