@@ -4,7 +4,6 @@ angular.module('gitwhere.controllers', [])
 .controller('MainController', ['$scope', 'googleMapsAPIAdapter', 'mapElementFactory', 'gitwhereAPIAdapter', function($scope, googleMapsAPIAdapter, mapElementFactory, gitwhereAPIAdapter) {
 
 	var map = mapElementFactory.init();
-	$scope.searchLocation = "";
 
 	$scope.statusMessage = "Acquiring location";
 
@@ -12,9 +11,16 @@ angular.module('gitwhere.controllers', [])
 		$scope.statusMessage = response;
 	});
 
-	$scope.searchByLocation = function() {
-		$scope.developerList = gitwhereAPIAdapter.developersByLocation($scope.searchLocation).query(function() {
+	$scope.searchByLocation = function(location) {
+		googleMapsAPIAdapter.getNewPosition(map, location).then(function(response) {
+			console.log(response);
 		});
+
+		$scope.developerList = gitwhereAPIAdapter.developersByLocation(location).query(function() {
+		});
+	};
+
+	$scope.getUserDetails = function(username) {
 	};
 
 }]);

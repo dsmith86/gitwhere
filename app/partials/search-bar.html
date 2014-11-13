@@ -4,9 +4,9 @@
 			<div>
 	 		<label>Type in a city and state or zip to see the GitHub users in that area:</label>
 		    <div class="input-group">
-	        <input type="text" class="form-control" placeholder="Location" name="q" ng-model="searchLocation" />
+	        <input type="text" class="form-control" placeholder="Location" name="q" ng-model="location" />
 	        <div class="input-group-btn">
-	            <button class="btn btn-default" ng-click="searchByLocation()"><i class="glyphicon glyphicon-search"></i></button>
+	            <button class="btn btn-default" ng-click="searchByLocation(location)"><i class="glyphicon glyphicon-search"></i></button>
 	        </div>
 		    </div>
 			</div>

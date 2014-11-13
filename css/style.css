@@ -21,12 +21,18 @@ div#developer-list {
 div.developer-list-item {
 	height: auto;
 	padding: 10px;
+	font-size: large;
+}
+
+div.developer-list-item:hover {
+	background-color: #ecf0f1;
+	cursor: pointer;
 }
 
 .developer-list-item img {
 	width: 50px;
-}
-
-.developer-list-item a {
-	font-size: large;
+	border-radius: 15px 15px 15px 15px;
+	-moz-border-radius: 15px 15px 15px 15px;
+	-webkit-border-radius: 15px 15px 15px 15px;
+	border: 0px solid #000000;
 }

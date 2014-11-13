@@ -1,8 +1,16 @@
 <div id="wrapper">
 	<div id="developer-list">
-		<div class="developer-list-item" ng-repeat="developer in developerList">
+
+		<div class="developer-list-item"
+			ng-repeat="developer in developerList"
+			ng-click="userInformation()">
 			<img ng-src="{{developer.avatar}}" />
-			<a ng-href="{{developer.url}}" target="_blank">{{developer.username}}</a>
+			{{developer.username}}
 		</div>
+
+		<div ng-show="userDetails">
+
+		</div>
+
 	</div>
 </div>
