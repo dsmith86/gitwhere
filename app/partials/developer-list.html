@@ -2,12 +2,12 @@
 	<div id="developer-list">
 
 		<div class="developer-list-item"
-			ng-repeat="developer in developerList"
-			ng-click="getDeveloperDetails(developer)">
+			ng-repeat="developer in developerList track by $index"
+			ng-click="getDeveloperDetails(developer.username, $index)">
 			<img ng-src="{{developer.avatar}}" />
 			{{developer.username}}
 
-			<developer-details ng-show="developer.details"></developer-details>
+			<developer-details ng-show="developer.detailed"></developer-details>
 		</div>
 
 	</div>
