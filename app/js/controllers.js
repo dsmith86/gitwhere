@@ -20,7 +20,10 @@ angular.module('gitwhere.controllers', [])
 		});
 	};
 
-	$scope.getUserDetails = function(username) {
+	$scope.getDeveloperDetails = function(developer) {
+		developer.details = gitwhereAPIAdapter.developerDetails(developer.username).get(
+			function() {
+		});
 	};
 
 }]);

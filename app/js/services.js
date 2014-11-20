@@ -127,5 +127,9 @@ factory('gitwhereAPIAdapter', function($resource) {
 		return $resource("http://gitwhere-api.herokuapp.com/developers/location/:location", {location: query});
 	}
 
+	api.developerDetails = function(query) {
+		return $resource("http://gitwhere-api.herokuapp.com/developers/details/:username", {username: query}, {get: {method: 'get', isArray: false}});
+	}
+
 	return api;
 });
