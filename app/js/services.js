@@ -5,7 +5,6 @@ angular.module('gitwhere.services', []).
 factory('googleMapsAPIAdapter', function($http, $q) {
 	var APIKey = "AIzaSyBMll9bq1l5y4-GKVcL3aNk-BaYmI5xdbg";
 	var geocoder = new google.maps.Geocoder();
-	var marker = new google.maps.Marker();
 
 	var api = {};
 
@@ -18,7 +17,7 @@ factory('googleMapsAPIAdapter', function($http, $q) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-				setupMap(map, marker, pos, null);
+				setupMap(map, pos, null);
 
 				reverseGeocode(pos.lat(), pos.lng())
 					.then(function(data) {
@@ -47,7 +46,7 @@ factory('googleMapsAPIAdapter', function($http, $q) {
 
 				var pos = new google.maps.LatLng(location.lat, location.lng);
 
-				setupMap(map, marker, pos, bounds);
+				setupMap(map, pos, bounds);
 			});
 
 		return deferred.promise;
@@ -84,7 +83,7 @@ factory('googleMapsAPIAdapter', function($http, $q) {
 		return deferred.promise;
 	};
 
-	var setupMap = function(map, marker, pos, bounds) {
+	var setupMap = function(map, pos, bounds) {
 		map.setCenter(pos);
 		map.setZoom(9);
 
@@ -98,12 +97,6 @@ factory('googleMapsAPIAdapter', function($http, $q) {
 
 			map.fitBounds(mapBounds);
 		}
-
-		marker.setMap(null);
-
-		marker = new google.maps.Marker({
-			position: pos
-		}).setMap(map);
 	};
 		
 	return api;
