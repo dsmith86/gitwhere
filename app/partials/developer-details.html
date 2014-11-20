@@ -1,7 +1,9 @@
 <div>
 	<ul>
-		<li><strong>Name:</strong> {{developer.name}}</li>
-		<li><strong>Website:</strong> {{developer.website}}</li>
+		<li ng-show="developer.name"><strong>Name:</strong> {{developer.name}}</li>
+		<li ng-show="developer.website"><strong>Website:</strong>
+			<a ng-href="{{getHttp($index)}}" target="_blank">{{developer.website}}</a>
+		</li>
 		<li><strong>Number of repos:</strong> {{developer.repo_count}}</li>
 		<li><strong>Number of gists:</strong> {{developer.gist_count}}</li>
 		<li><strong>Following:</strong> {{developer.following}}</li>

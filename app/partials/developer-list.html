@@ -4,8 +4,9 @@
 		<div class="developer-list-item"
 			ng-repeat="developer in developerList track by $index"
 			ng-click="getDeveloperDetails(developer.username, $index)">
+
 			<img ng-src="{{developer.avatar}}" />
-			{{developer.username}}
+			<a ng-href="{{developer.url}}" target="_blank">{{developer.username}}</a>
 
 			<developer-details ng-show="developer.detailed"></developer-details>
 		</div>

@@ -21,9 +21,23 @@ angular.module('gitwhere.controllers', [])
 	};
 
 	$scope.getDeveloperDetails = function(username, index) {
-		$scope.developerList[index] = gitwhereAPIAdapter.developerDetails(username).get(
+		var results = gitwhereAPIAdapter.developerDetails(username).get(
 			function() {
+				$scope.developerList[index] = results;
 		});
 	};
+
+	$scope.getHttp = function(index) {
+		var link = $scope.developerList[index].website;
+
+		if (link === null) {
+			return "";
+		}
+
+	    if (link.search(/^http[s]?\:\/\//) == -1) {
+	        link = 'http://' + link;
+	    }
+	    return link;
+	}
 
 }]);
